@@ -23,5 +23,27 @@ def min_buggy(x: Int, y:Int) : Int = {
 //same as
 "aBC" replace("a", "A") 
 
-//
+// list
+val list = List("a", "b", "c")
+
+// map
+val map = Map(1 -> "a", 2 -> "b")
+
+// for each 
+list.foreach(value => println(value))
+
+list.foreach(println)
+
+list.foreach(println(_))
+
+// traditional for each
+
+for ( value <- list) println(value)
+
+// reverse
+for ( value <- list.reverse ) println(value)
+
+// new ArrayList
+val list = new ArrayList[String]
+
 ```
