@@ -37,7 +37,6 @@ list.foreach(println)
 list.foreach(println(_))
 
 // traditional for each
-
 for ( value <- list) println(value)
 
 // reverse
@@ -45,5 +44,6 @@ for ( value <- list.reverse ) println(value)
 
 // new ArrayList
 val list = new ArrayList[String]
-
+list.add("this is")
+list add "fun" // infix notation
 ```
