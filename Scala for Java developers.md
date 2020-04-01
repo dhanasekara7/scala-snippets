@@ -46,4 +46,29 @@ for ( value <- list.reverse ) println(value)
 val list = new ArrayList[String]
 list.add("this is")
 list add "fun" // infix notation
+
+// BigDecimal addition
+val bd_add = BigDecimal(10) + BigDecimal(20)
+val bd_add = new BigDecimal(10).add(new BigDecimal(20)) // <- java
+
+// String methods
+
+new String("A").eq(new String("A")) // false
+// comparing fresh object always false
+
+new String("A") == new String("A") // true
+
+//java
+new String("A").equals(new String("A")) // true
+// BEHAVE as java since "equals" instead of "eq"
+
+// var args
+public void add(String... names) // java
+
+def add(names: String*) // scala
+
+// function as argument
+def test(f : () => Boolean) : Boolean = ???
+test(()=> if (!x) true else false )
+
 ```
