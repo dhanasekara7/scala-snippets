@@ -27,7 +27,7 @@ class Customer(private val name: String,private val address: String) {
  
 }
 
-// but when decompile scala, there are private setters also
+// but when decompile scala, there are private getters also
 public class CustomerScala {
     private final String name;
     private final String address;
@@ -85,7 +85,82 @@ public class CustomerScala {
 }
 /*** ---------------------------------***/
 
+//3) example
+/*** Java Customer with id ---------------------------------***/
 
+public class Customer {
+    private final String name;
+    private final String address;
+
+    private String id;
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Customer(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public static void main(String[] args) {
+        final Customer customer = new Customer("dddd", "seishincho");
+        customer.setId("12345");
+    }
+}
+
+// scala
+class CustomerWithId(val name: String, val address : String) {
+  var id = ""
+}
+object CustomerWithId {
+  def main(args: Array[String]): Unit = {
+    val ddd = new CustomerWithId("ddd", "seishincho")
+  }
+}
+
+
+//decompiled scala 
+// note setter method id_$eq
+public class CustomerWithId {
+    private final String name;
+    private final String address;
+    private String id;
+
+    public static void main(String[] arrstring) {
+        CustomerWithId$.MODULE$.main(arrstring);
+    }
+
+    public String name() {
+        return this.name;
+    }
+
+    public String address() {
+        return this.address;
+    }
+
+    public String id() {
+        return this.id;
+    }
+
+    public void id_$eq(String x$1) {
+        this.id = x$1;
+    }
+
+    public CustomerWithId(String name, String address) {
+        this.name = name;
+        this.address = address;
+        this.id = "";
+    }
+}
 
 
 
