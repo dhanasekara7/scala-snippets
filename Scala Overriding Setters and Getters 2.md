@@ -1,5 +1,6 @@
 ##### Scala overriding setters and getters 2
 ```scala
+
 //**************1)  java: prevent id is being set again
 // isEmpty check on setId
 
@@ -34,11 +35,21 @@ public class Customer {
     }
 }
 // scala
+/*
+  Override generated methods
+1) Rename the field
+2) Mark as private
+3) Recreate setter and getter
+*/
+
 class CustomerWithId(val name: String, val address: String) {
+//1) Rename the field
+//2) Mark as private
   private var _id = ""
 
+//3) Recreate getter
   def id = _id
-
+//3) Recreate setter 
   def id_=(value: String): Unit = {
     if (id.isEmpty) {
       _id = value
