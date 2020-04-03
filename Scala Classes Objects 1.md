@@ -1,4 +1,4 @@
-##### basics
+##### Scala classes and Objects 1
 ```scala
 // in java
 for(int i = 0; i <= 100; i++) {
@@ -163,6 +163,52 @@ public class CustomerWithId {
 }
 
 
+// now in scala we can use
+ddd.id_=("1234")
+//or
+ddd.id = "1234"
 
+//4) *****************// scala ( private var => setter and getter is private
+ class CustomerWithId(val name: String, val address : String) {
+   private var id = ""
+ }
+ object CustomerWithId {
+   def main(args: Array[String]): Unit = {
+     val ddd = new CustomerWithId("ddd", "seishincho")
+   }
+ }
+
+// java -jar ~/tools/java_decompiler/cfr/cfr-0.149.jar CustomerWithId
+public class CustomerWithId {
+    private final String name;
+    private final String address;
+    private String id;
+
+    public static void main(String[] arrstring) {
+        CustomerWithId$.MODULE$.main(arrstring);
+    }
+
+    public String name() {
+        return this.name;
+    }
+
+    public String address() {
+        return this.address;
+    }
+
+    private String id() {
+        return this.id;
+    }
+
+    private void id_$eq(String x$1) {
+        this.id = x$1;
+    }
+
+    public CustomerWithId(String name, String address) {
+        this.name = name;
+        this.address = address;
+        this.id = "";
+    }
+}
 
 ```
