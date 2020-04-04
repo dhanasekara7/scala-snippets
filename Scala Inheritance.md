@@ -135,9 +135,39 @@ class ExponentialIncrementer(rate : Int) extends Counter {
     }
 }
 
+class Foo {
+    val foo = new IncrementByOne
+    foo.count // not allowed, because "count" is protected,
+    //only on the subtypes it is allowed
+}
+
 // abstract class
 abstract class AbstractCustomer {
     def total: Double
 }
+
+// forces subtypes to force a value for "count",
+// since it is NOT initialized
+trait Counter {
+    protected var count
+    def increment()
+}
+
+// super class method calling order
+// right to left
+class Animal
+trait HasWings
+trait Bird extends HasWings
+trait HasFourLegs extends Animal
+
+// if all the move has "move" method
+// super.move in the FlyingHorse calls
+// the right to left order
+// FlyingHorse HasFourLegs Bird Animal
+// this is called "linearization"
+// ( not avl in java 8)
+class FlyingHorse extends Animal with Bird with HasFourLegs
+
+
 
 ````
