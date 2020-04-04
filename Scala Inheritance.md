@@ -79,15 +79,65 @@ trait Readable {
     def read(buffer: CharBuffer) : Int
 }
 
-// extends rather than implements
+// "extends" rather than implements
 // override in front of def is optional,
 // since it is abstract method (in trait Readable)
-
-class FileReader(file : File) extends Readable {
+// Additional traits "with" keyword
+class FileReader(file : File) extends Readable with AutoCloseable {
     def read(buffer: CharBuffer) : Int = {
         val linesRead: Int = 0
         linesRead
     }
+
+    def close() : Unit = ???
+}
+
+// default method in java 8
+interface Sortable<A extends Comparable<A>> extends Iterable<A> {
+    default public List<A> sort() {
+        List<A> list = new ArrayList<>();
+        for(A element: this)
+            list.add(A);
+        // natural ordering (first, second) -> first.compareTo(second)
+        list.sort((first, second) -> first.compareTo(second));
+        return list;
+    }
+}
+// scala
+trait Sortable[A <: Ordered[A]] extends Iterable[A] {
+    def sort: Seq[A] = {
+        this.toList.sorted
+    }
+}
+
+class Customer .... extends Ordered[Customer] {
+    ...
+    def compare(that : Customer) : Int = name.compareTo(that.name)
+    override def toString : name + " $ " + total
+
+}
+
+// trait and subclass
+
+trait Counter {
+    protected var count = 0
+    def increment()
+}
+
+class IncrementByOne extends Counter {
+    // increment() is abstract in trait, so "override" is not mandatory
+    override def increment(): Unit = count += 1
+}
+
+class ExponentialIncrementer(rate : Int) extends Counter {
+    def increment(): Unit = {
+        count += rate * count
+    }
+}
+
+// abstract class
+abstract class AbstractCustomer {
+    def total: Double
 }
 
 ````
